@@ -1,0 +1,69 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Twitter Calendar Heat Map">
+    <meta name="author" content="srrm-lwn">
+    <title>Twitter Calendar Heatmap</title>
+</head>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.css" />
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/styles.css">
+
+<body>
+    <div class="container-fluid">
+        <div class="text-center">
+            <h2>Twitter Calendar Heat Map</h2>
+            <h4>
+            <small>A hack by <a href="https://twitter.com/srrm_lwn" target="_blank">@srrm_lwn</a></small>
+        </h4>
+            <br>
+            <h4>Visualize the latest<small><sup>*</sup></small> tweets of any Twitter user on the Calendar!</h4>
+            <h5><small><sup>*</sup> upto only a 1000 tweets pery query due to Twitter API limits.. :-S</small>  </h5>
+        </div>
+        <br/>
+        <div class="center-block">
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">@</span>
+                <input type="text"
+                       class="form-control clearable"
+                       id="handle"
+                       placeholder="twitter_handle"
+                       pattern="^[_A-z0-9]{1,}$"
+                       aria-describedby="basic-addon1"
+                       onkeydown="if (event.keyCode == 13) document.getElementById('go').click()"
+                       maxlength="15" />
+                <span class="input-group-btn">
+                        <button id="go" class="btn btn-primary ladda-button" type="submit">Go!</button>
+                    </span>
+            </div>
+        </div>
+
+        <div class="alert alert-info center-block hidden" id="infoAlert">
+            Retrieving tweets..
+        </div>
+
+        <div class="alert alert-danger center-block hidden" id="errorAlert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            <span id="errorMessage">Sorry, that page does not exist.</span>
+        </div>
+
+        <div id="cal-heatmap" class="center-block"></div>
+        <br/>
+        <div class="center-block">
+            <a href="#" id="previous" class="move hidden"><i class="fa fa-chevron-left fa-1x"></i></a>
+            <a href="#" id="next" class="move hidden"><i class="fa fa-chevron-right fa-1x"></i></a>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/d3.js"></script>
+    <script type="text/javascript" src="js/cal-heatmap.js"></script>
+    <script type="text/javascript" src="js/moment.min.js"></script>
+    <script type="text/javascript" src="js/heatmap.js"></script>
+</body>
+
+</html>
